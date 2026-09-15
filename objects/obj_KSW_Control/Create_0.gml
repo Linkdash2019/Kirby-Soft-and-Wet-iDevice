@@ -14,12 +14,14 @@ global.KSW_HasCursor = true;
 
 #region Gameplay Variables
 global.gameTitle = "Kirby ~ Soft & Wet";
-global.versionNumber = "1.2.2";
+global.versionNumber = "1.2.4";
 global.versionSubtitle = "Android Port";
 
 global.pauseScript = scr_KSW_PauseScript;
 
 global.maxPlayers = 1;
+
+global.screenOrientation = 0;
 
 global.KSW_FishRarity[3] = 0;
 global.KSW_FishTime[3] = 0;
