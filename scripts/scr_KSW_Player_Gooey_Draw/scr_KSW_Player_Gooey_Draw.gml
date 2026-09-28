@@ -42,8 +42,13 @@ function scr_KSW_Player_Gooey_Draw()
 	#endregion
 	
 	#region Bobber
+	if (bobberIsShiny) draw_sprite(spr_KSW_UI_CaughtBox_Shine,bobberShineIndex,bobberX - 15 + bobberShakeFinal,bobberY - 15);
+	
 	scr_DrawCurve_Thick(rodX + shakeXFinal,rodY,bobberX + bobberShakeFinal,bobberY,0,8,global.KSW_CharacterList[global.playerCharacter[playerNum]].sprayPaints[currentSprayPaint].gooeyTongueColor,2);
+	
+	if ((global.shaders) and (bobberIsShiny)) pal_swap_set(sprBobberPal,1,false);
 	draw_sprite(sprBobber,sprBobberImageIndex,bobberX + bobberShakeFinal,bobberY);
+	if ((global.shaders) and (bobberIsShiny)) pal_swap_reset();
 	#endregion
 	
 	#region Rod
@@ -195,7 +200,7 @@ function scr_KSW_Player_Gooey_Draw()
 	if (sprite_index != -1)
 	{
 		if ((global.shaders) and (currentSprayPaint != 0)) pal_swap_set(global.KSW_CharacterList[global.playerCharacter[playerNum]].sprayPaints[currentSprayPaint].sprite,1,false);
-		draw_sprite_ext(sprite_index,image_index,x + shakeXFinal + drawXOffset,y + shakeYFinal + drawYOffset,image_xscale,image_yscale,image_angle,image_blend,image_alpha);
+		if (!global.KSW_CharacterList[global.playerCharacter[playerNum]].hats[currentHat].hidesPlayer) draw_sprite_ext(sprite_index,image_index,x + shakeXFinal + drawXOffset,y + shakeYFinal + drawYOffset,image_xscale,image_yscale,image_angle,image_blend,image_alpha);
 		if (targetHatShadowSprite != undefined) draw_sprite_ext(targetHatShadowSprite,image_index,x + shakeXFinal + drawXOffset,y + shakeYFinal + drawYOffset,image_xscale,image_yscale,image_angle,image_blend,image_alpha);
 		if ((global.shaders) and (currentSprayPaint != 0)) pal_swap_reset();
 		
